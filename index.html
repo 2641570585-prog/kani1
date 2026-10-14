@@ -170,15 +170,20 @@ body{--ink:#2511fb;--paper:#fff;--rule:#2511fb66;--display:'Bodoni Moda',serif}.
 .site-footer span{text-align:left}
 .site-footer a{margin-left:auto;text-align:right}
 
-/* Let the modal itself own the native right-hand scrollbar. */
-dialog{overflow:auto!important;overscroll-behavior:contain;scrollbar-gutter:stable}
-.reader-bar{position:sticky;top:0;z-index:20}
-.reader-body{height:auto!important;min-height:calc(100dvh - 66px);overflow:visible!important}
+/* The detail content owns one independent scrollbar; lock the background page. */
+html:has(#reader[open]),body.modal-open{overflow:hidden!important;scrollbar-gutter:auto!important}
+#reader{overflow:hidden!important;scrollbar-gutter:auto!important;width:100%;display:none;flex-direction:column}
+#reader[open]{display:flex}
+.reader-bar{position:relative!important;flex:0 0 auto;z-index:20}
+#reader .reader-body{height:auto!important;min-height:0!important;flex:1 1 0;overflow-y:scroll!important;overflow-x:auto!important;overscroll-behavior:contain;scrollbar-gutter:stable;scrollbar-width:auto;scrollbar-color:#777 #e8e8e8;scroll-behavior:auto}
+#reader .reader-body::-webkit-scrollbar{width:16px;height:16px}
+#reader .reader-body::-webkit-scrollbar-track{background:#e8e8e8}
+#reader .reader-body::-webkit-scrollbar-thumb{background:#777;border:3px solid #e8e8e8;border-radius:10px;min-height:36px}
+#reader .reader-body::-webkit-scrollbar-thumb:hover{background:#555}
 
 @media(max-width:800px){
   .contact-grid{grid-template-columns:1fr;row-gap:22px}
   .contact-grid>[data-copy]{justify-self:start;text-align:left}
-  .reader-body{min-height:calc(100dvh - 110px)}
 }
 </style></head><body id="top"><div class="deck-viewport"><main class="deck-stage"><section class="slide active visible"><header><div class="name">J / N ✳</div><nav><button data-open="works">Work</button><button data-open="about">About</button><button data-open="contact">Contact</button></nav></header><div class="intro reveal"><h1>Jianing’s desk.</h1><p>董佳凝；UX/UI 设计师。理解用户，也热爱创造。</p></div><div class="desk reveal delay"><div class="desk-greeting"><span class="greeting-copy">你好，我是佳凝。这里每一件东西都可以移动。</span><button class="next-note" aria-label="下一条桌面留言">▶</button></div><div class="paperclip drag"><svg viewBox="0 0 85 160"><path d="M25 120V40a22 22 0 0 1 44 0v95a31 31 0 0 1-62 0V40" fill="none" stroke="currentColor" stroke-width="8"/><path d="M29 120V46a12 12 0 0 1 24 0v82" fill="none" stroke="#70f4f6" stroke-width="8"/></svg></div><button class="sticker" aria-label="旋转贴纸">✳</button><div class="object book drag"><h2>Selected<br>works.</h2><p>小红书 · 宠粉清单<br>用户体验优化 / 2026</p><button data-project="ux">打开项目 ↗</button></div><div class="object monitor drag"><div class="screen">hello :)</div><p class="tiny">RESEARCH / INTERACTION / VISUAL</p></div><div class="object note drag"><p>People first.<br>Always.</p><p style="font-size:26px;margin-top:20px">DISCOVER → DEFINE<br>DESIGN → REFINE</p></div><div class="object project drag"><img data-local-src="assets/cover-a.png" alt="哔哩哔哩年度报告设计"><p>年度回忆报告</p><button data-project="bili" style="background:none;font-size:19px">View project ↗</button></div><div class="object pen drag" aria-label="可拖动的笔"></div></div><button class="reset">Reset desk ↻</button><button class="enter" data-open="works">View work ↓</button></section></main></div>
 <div class="site-content"><div class="content-wrap"><section id="works"><div class="section-head scroll-reveal"><h2>Selected works.</h2><p>01—02 / USER EXPERIENCE & VISUAL DESIGN</p></div><div class="work-grid"><button class="work-card scroll-reveal" data-project="ux"><div class="work-image"><img data-local-src="assets/cover-ux.png" loading="lazy" alt="小红书 · 宠粉清单"></div><h3>小红书 · 宠粉清单<span class="arrow">↗</span></h3><p>从触达、信任到转化，重新梳理内容与购物体验。<br>个人 UX 项目 · 2026 / 34 页</p></button><button class="work-card scroll-reveal" data-project="bili"><div class="work-image"><img data-local-src="assets/cover-a.png" loading="lazy" alt="哔哩哔哩 · 年度回忆报告"></div><h3>哔哩哔哩 · 年度回忆报告<span class="arrow">↗</span></h3><p>将年度数据转化为有温度的云端回忆。<br>个人视觉项目 · 2026 / 18 页</p></button></div><p style="margin-top:35px"><button class="text-link" data-project="full">阅读完整作品集 · 保留全部 67 页内页 ↗</button></p></section></div>
